@@ -1,5 +1,5 @@
-from Auto import Auto
+from PersonalVehicle import PersonalVehicle
 
-auto = Auto("asd-123", "teherauto", 2000)
-print(auto.License)
+auto = PersonalVehicle("asd-123", 2000, 2)
+print(auto.Type)
 
