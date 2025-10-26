@@ -16,3 +16,17 @@ class Rental:
         self.__auto = auto
         self.__start = start
         self.__end = end
+
+    @property
+    def Auto(self):
+        return self.__auto
+
+    @property
+    def Start(self):
+        return self.__start
+
+    @property
+    def End(self):
+        return self.__end
+
+
