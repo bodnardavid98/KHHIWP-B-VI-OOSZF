@@ -1,6 +1,9 @@
 from Auto import Auto
 
 class PersonalVehicle(Auto):
+    # Final class inherited from Auto for single personal vehicle
+
+    # Number of passenger/driver seats
     __seats = 4
 
     def __init__(self, license, pricePerDay, seats):

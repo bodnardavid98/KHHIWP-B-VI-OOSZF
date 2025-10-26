@@ -1,6 +1,9 @@
 from Auto import Auto
 
 class Truck(Auto):
+    # Final class inherited from Auto for single truck
+
+    # Amount of cargo space, in m^2
     __cargoSpace = 15
 
     def __init__(self, license, pricePerDay, cargoSpace):
