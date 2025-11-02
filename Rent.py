@@ -7,15 +7,18 @@ class Rent:
     __auto = Auto(None, None, None)
 
     # Start of renting period
-    __start = []
+    __start = ""
 
     # End of renting period
-    __end = []
+    __end = ""
 
-    def __init__(self, auto, start, end):
+    __days = 0
+
+    def __init__(self, auto, start, end, days):
         self.__auto = auto
         self.__start = start
         self.__end = end
+        self.__days = days
 
     @property
     def Auto(self):
@@ -30,7 +33,7 @@ class Rent:
         return self.__end
 
     def __str__(self):
-        return "%s kölcsönözve %s-től %s-ig" % (self.__auto.License, self.Start, self.End)
+        return "%s kölcsönözve %s-től %s-ig, ára: %d" % (self.__auto.License, self.Start, self.End, self.__days * self.__auto.PricePerDay)
 
 
 

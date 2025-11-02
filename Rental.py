@@ -77,7 +77,17 @@ class Rental:
                 print("A befejező dátum nem lehet korábban a kezdő dátumnál")
             else:
                 break
-        self.__rents.append(Rent(self.__cars[car], start, end))
+
+        startResult = self.__dateRegex.match(start)
+        endResult = self.__dateRegex.match(end)
+        startyear, startmonth, startday = startResult.group(1), startResult.group(2), startResult.group(3)
+        endyear, endmonth, endday = endResult.group(1), endResult.group(2), endResult.group(3)
+        startDate = datetime.date(int(startyear), int(startmonth), int(startday))
+        endDate = datetime.date(int(endyear), int(endmonth), int(endday))
+        datedifference = endDate - startDate
+
+        self.__rents.append(Rent(self.__cars[car], start, end, datedifference.days + 1))
+        print("Bérlés felvéve: %s" % str(self.__rents[-1]))
 
     def backRent(self):
         print(str(self) + "Válassz egy kölcsönzést a lemondásra")
