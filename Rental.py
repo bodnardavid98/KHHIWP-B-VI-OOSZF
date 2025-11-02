@@ -13,6 +13,15 @@ class Rental:
     def __init__(self, name):
         self.__name = name
 
+    def bookRent(self):
+        print()
+
+    def backRent(self):
+        print(str(self) + "Válassz egy kölcsönzést a lemondásra")
+
+    def addCar(self, car):
+        self.__cars.append(car)
+
     def deleteRent(self, rentID):
         if self.__rents.Length() > rentID:
             del self.__rents[rentID]
