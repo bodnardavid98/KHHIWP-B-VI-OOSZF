@@ -17,8 +17,13 @@ class Rental:
         if self.__rents.Length() > rentID:
             del self.__rents[rentID]
         else:
-            print("There is no such rent.")
+            print("Nincs ilyen bérlés.")
 
     def printRents(self):
+        print(self)
+
+    def __str__(self):
+        result = "Az %s cég összes elmentett bérlése (%d darab):\n" % (self.__name, len(self.__rents))
         for rent in self.__rents:
-            print(rent)
+            result += str(rent) + "\n"
+        return result
