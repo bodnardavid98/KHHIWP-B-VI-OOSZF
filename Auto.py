@@ -39,4 +39,5 @@ class Auto:
     def PricePerDay(self, pricePerDay):
         self.__pricePerDay = pricePerDay
 
-
+    def __str__(self):
+        return "%s rendszámú, %s tipusú autó, %d kölcsönzési díjjal" % (self.__license, self.__type, self.__pricePerDay)

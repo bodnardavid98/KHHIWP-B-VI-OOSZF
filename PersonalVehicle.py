@@ -17,3 +17,6 @@ class PersonalVehicle(Auto):
     @Seats.setter
     def Seats(self, seats):
         self.__seats = seats
+
+    def __str__(self):
+        return "%s rendszámú személyautó, %d üléssel, %d kölcsönzési díjjal" % (self.License, self.__seats, self.PricePerDay)

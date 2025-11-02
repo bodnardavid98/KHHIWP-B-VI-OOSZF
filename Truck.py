@@ -17,3 +17,6 @@ class Truck(Auto):
     @CargoSpace.setter
     def CargoSpace(self, cargoSpace):
         self.__cargoSpace = cargoSpace
+
+    def __str__(self):
+        return "%s rendszámú tehergépjármű, %d köbméter tárolóhellyel, %d kölcsönzési díjjal" % (self.License, self.__cargoSpace, self.PricePerDay)
