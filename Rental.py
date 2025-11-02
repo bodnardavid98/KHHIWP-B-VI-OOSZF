@@ -1,3 +1,5 @@
+import re, datetime
+
 class Rental:
     # Final class for a company providing cars for rent
 
@@ -10,8 +12,28 @@ class Rental:
     # List of all ongoing and past rents
     __rents = []
 
+    __dateRegex = re.compile("(\\d\\d\\d\\d)-(\\d\\d)-(\\d\\d)")
+
     def __init__(self, name):
         self.__name = name
+
+    def getDate(self, name):
+        date = "-2"
+        while True:
+            date = input("Adj meg egy %s dátumot (yyyy-mm-dd), vagy -1 visszalépéshez: " % name)
+            if date == "-1":
+                return date
+            else:
+                dateResult = self.__dateRegex.match(date)
+                if dateResult == None:
+                    print("Rossz dátum formátum")
+                else:
+                    year, month, day = dateResult.group(1), dateResult.group(2), dateResult.group(3)
+                    try:
+                        datetime.date(int(year), int(month), int(day))
+                        return date
+                    except:
+                        print("Ilyen dátum nem létezik")
 
     def bookRent(self):
         for car in self.__cars:
@@ -32,6 +54,14 @@ class Rental:
                         print("Nincs ilyen indexű autó")
                 except:
                     print("Ez nem egy szám")
+
+
+        start = self.getDate("kezdő")
+        if start == "-1":
+            return
+        end = self.getDate("befejező")
+        if end == "-1":
+            return
 
     def backRent(self):
         print(str(self) + "Válassz egy kölcsönzést a lemondásra")
