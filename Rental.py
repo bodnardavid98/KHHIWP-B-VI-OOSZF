@@ -1,4 +1,5 @@
 import re, datetime
+from Rent import Rent
 
 class Rental:
     # Final class for a company providing cars for rent
@@ -32,12 +33,14 @@ class Rental:
                     try:
                         datetime.date(int(year), int(month), int(day))
 
+                        found = False
                         for rent in self.__rents:
                             if car == rent.Auto and rent.Start <= date and date <= rent.End:
                                 print("Ez az autó ekkor már foglalt")
-                                continue
-
-                        return date
+                                found = True
+                                break
+                        if not found:
+                            return date
                     except:
                         print("Ilyen dátum nem létezik")
 
@@ -74,6 +77,7 @@ class Rental:
                 print("A befejező dátum nem lehet korábban a kezdő dátumnál")
             else:
                 break
+        self.__rents.append(Rent(self.__cars[car], start, end))
 
     def backRent(self):
         print(str(self) + "Válassz egy kölcsönzést a lemondásra")

@@ -1,6 +1,6 @@
 from Auto import Auto
 
-class Rental:
+class Rent:
     # Final class for a single rent of a single auto
 
     # The auto being rented
@@ -30,7 +30,7 @@ class Rental:
         return self.__end
 
     def __str__(self):
-        return "%s  kölcsönözve %s-től %s-ig" % (self.Auto().License(), + self.Start(), self.End())
+        return "%s kölcsönözve %s-től %s-ig" % (self.__auto.License, self.Start, self.End)
 
 
 
