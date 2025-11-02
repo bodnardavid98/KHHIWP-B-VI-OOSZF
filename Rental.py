@@ -17,7 +17,7 @@ class Rental:
     def __init__(self, name):
         self.__name = name
 
-    def getDate(self, name):
+    def getDate(self, name, car):
         date = "-2"
         while True:
             date = input("Adj meg egy %s dátumot (yyyy-mm-dd), vagy -1 visszalépéshez: " % name)
@@ -31,6 +31,12 @@ class Rental:
                     year, month, day = dateResult.group(1), dateResult.group(2), dateResult.group(3)
                     try:
                         datetime.date(int(year), int(month), int(day))
+
+                        for rent in self.__rents:
+                            if car == rent.Auto and rent.Start <= date and date <= rent.End:
+                                print("Ez az autó ekkor már foglalt")
+                                continue
+
                         return date
                     except:
                         print("Ilyen dátum nem létezik")
@@ -55,13 +61,19 @@ class Rental:
                 except:
                     print("Ez nem egy szám")
 
+        start, end = "-2", "-2"
+        while True:
+            start = self.getDate("kezdő", self.__cars[car])
+            if start == "-1":
+                return
+            end = self.getDate("befejező", self.__cars[car])
+            if end == "-1":
+                return
 
-        start = self.getDate("kezdő")
-        if start == "-1":
-            return
-        end = self.getDate("befejező")
-        if end == "-1":
-            return
+            if end < start:
+                print("A befejező dátum nem lehet korábban a kezdő dátumnál")
+            else:
+                break
 
     def backRent(self):
         print(str(self) + "Válassz egy kölcsönzést a lemondásra")
