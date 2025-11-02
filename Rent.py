@@ -29,4 +29,8 @@ class Rental:
     def End(self):
         return self.__end
 
+    def __str__(self):
+        return self.Auto().License() + " rented from " + self.Start() + " to " + self.End()
+
+
 

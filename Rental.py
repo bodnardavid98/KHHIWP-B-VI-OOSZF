@@ -21,4 +21,4 @@ class Rental:
 
     def printRents(self):
         for rent in self.__rents:
-            print(rent.Car().License() + " rented from " + rent.Start() + " to " + rent.End())
+            print(rent)
