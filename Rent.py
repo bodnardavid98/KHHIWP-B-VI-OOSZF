@@ -30,7 +30,7 @@ class Rental:
         return self.__end
 
     def __str__(self):
-        return self.Auto().License() + " rented from " + self.Start() + " to " + self.End()
+        return "%s  kölcsönözve %s-től %s-ig" % (self.Auto().License(), + self.Start(), self.End())
 
 
 
