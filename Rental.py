@@ -14,7 +14,24 @@ class Rental:
         self.__name = name
 
     def bookRent(self):
-        print()
+        for car in self.__cars:
+            print(str(self.__cars.index(car)) + " " + str(car))
+
+        car = "-2"
+        while True:
+            car = input("Válassz egy autót kölcsönzésre, vagy -1 visszalépéshez: ")
+            if car == "-1":
+                return
+            else:
+                try:
+                    carNumber = int(car)
+                    if -1 < carNumber and carNumber < len(self.__cars):
+                        car = carNumber
+                        break
+                    else:
+                        print("Nincs ilyen indexű autó")
+                except:
+                    print("Ez nem egy szám")
 
     def backRent(self):
         print(str(self) + "Válassz egy kölcsönzést a lemondásra")
