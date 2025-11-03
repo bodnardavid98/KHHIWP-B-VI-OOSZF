@@ -94,7 +94,23 @@ class Rental:
         self.addRent(car, start, end, False)
 
     def backRent(self):
-        print(str(self) + "Válassz egy kölcsönzést a lemondásra")
+        print(self)
+        rent = "-2"
+        while True:
+            rent = input("Válassz egy kölcsönzést a lemondásra, vagy -1 visszalépéshez: ")
+            if rent == "-1":
+                return
+            else:
+                try:
+                    rentNumber = int(rent)
+                    if -1 < rentNumber and rentNumber < len(self.__rents):
+                        rent = rentNumber
+                        break
+                    else:
+                        print("Nincs ilyen indexű kölcsönzés")
+                except:
+                    print("Ez nem egy szám")
+        self.__rents.pop(rent)
 
     def addCar(self, car):
         self.__cars.append(car)
@@ -111,5 +127,5 @@ class Rental:
     def __str__(self):
         result = "Az %s cég összes elmentett bérlése (%d darab):\n" % (self.__name, len(self.__rents))
         for rent in self.__rents:
-            result += str(rent) + "\n"
+            result += str(self.__rents.index(rent)) + " " + str(rent) + "\n"
         return result
