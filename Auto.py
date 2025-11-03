@@ -40,4 +40,6 @@ class Auto:
         self.__pricePerDay = pricePerDay
 
     def __str__(self):
+        # Function to convert class object to string, writes license, type and rent price per day
+
         return "%s rendszámú, %s tipusú autó, %d kölcsönzési díjjal" % (self.__license, self.__type, self.__pricePerDay)

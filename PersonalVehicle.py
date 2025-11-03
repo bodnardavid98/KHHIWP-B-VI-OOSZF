@@ -19,4 +19,6 @@ class PersonalVehicle(Auto):
         self.__seats = seats
 
     def __str__(self):
+        # Function to convert class object to string, writes license, type, amount of seats and rent price per day
+
         return "%s rendszámú személyautó, %d üléssel, %d kölcsönzési díjjal" % (self.License, self.__seats, self.PricePerDay)

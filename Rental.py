@@ -13,12 +13,15 @@ class Rental:
     # List of all ongoing and past rents
     __rents = []
 
+    # Regex used to validate dates and separated years, months and days
     __dateRegex = re.compile("(\\d\\d\\d\\d)-(\\d\\d)-(\\d\\d)")
 
     def __init__(self, name):
         self.__name = name
 
     def getDate(self, name, car):
+        # Take a date from the user
+
         date = "-2"
         while True:
             date = input("Adj meg egy %s dátumot (yyyy-mm-dd), vagy -1 visszalépéshez: " % name)
@@ -45,6 +48,8 @@ class Rental:
                         print("Ilyen dátum nem létezik")
 
     def addRent(self, carIndex, start, end, silent):
+        # Add a rent to the list of rents
+
         startResult = self.__dateRegex.match(start)
         endResult = self.__dateRegex.match(end)
         startyear, startmonth, startday = startResult.group(1), startResult.group(2), startResult.group(3)
@@ -58,6 +63,8 @@ class Rental:
             print("Bérlés felvéve: %s" % str(self.__rents[-1]))
 
     def bookRent(self):
+        # Add a rent given by the user
+
         for car in self.__cars:
             print(str(self.__cars.index(car)) + " " + str(car))
 
@@ -94,6 +101,8 @@ class Rental:
         self.addRent(car, start, end, False)
 
     def backRent(self):
+        # Remove a rent given by the user
+
         print(self)
         rent = "-2"
         while True:
@@ -113,18 +122,26 @@ class Rental:
         self.__rents.pop(rent)
 
     def addCar(self, car):
+        # Add a car
+
         self.__cars.append(car)
 
     def deleteRent(self, rentID):
+        # Delete a specific rent
+
         if self.__rents.Length() > rentID:
             del self.__rents[rentID]
         else:
             print("Nincs ilyen bérlés.")
 
     def printRents(self):
+        # Print all rents
+
         print(self)
 
     def __str__(self):
+        # Function to convert class object to string, writes name, amount of rents and lists all rents
+
         result = "Az %s cég összes elmentett bérlése (%d darab):\n" % (self.__name, len(self.__rents))
         for rent in self.__rents:
             result += str(self.__rents.index(rent)) + " " + str(rent) + "\n"

@@ -19,4 +19,6 @@ class Truck(Auto):
         self.__cargoSpace = cargoSpace
 
     def __str__(self):
+        # Function to convert class object to string, writes license, type, cargo capacity and rent price per day
+
         return "%s rendszámú tehergépjármű, %d köbméter tárolóhellyel, %d kölcsönzési díjjal" % (self.License, self.__cargoSpace, self.PricePerDay)

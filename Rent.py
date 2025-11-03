@@ -12,6 +12,7 @@ class Rent:
     # End of renting period
     __end = ""
 
+     # Number of days the rent lasts
     __days = 0
 
     def __init__(self, auto, start, end, days):
@@ -33,6 +34,8 @@ class Rent:
         return self.__end
 
     def __str__(self):
+        # Function to convert class object to string, writes license, start and end dates and full price of rent
+
         return "%s kölcsönözve %s-től %s-ig, ára: %d" % (self.__auto.License, self.Start, self.End, self.__days * self.__auto.PricePerDay)
 
 
