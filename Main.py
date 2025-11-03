@@ -7,6 +7,11 @@ rental.addCar(Truck("ASD-123", 20000, 20))
 rental.addCar(PersonalVehicle("QWE-456", 10000, 2))
 rental.addCar(PersonalVehicle("YXC-789", 15000, 4))
 
+rental.addRent(0, "2025-01-02", "2025-01-03", True)
+rental.addRent(0, "2025-01-04", "2025-01-04", True)
+rental.addRent(1, "2025-01-04", "2025-01-04", True)
+rental.addRent(2, "2025-01-04", "2025-01-05", True)
+
 while True:
     print("Válaszd ki a funkciót.\n 1 Autó bérlése\n 2 Bérlés lemondása\n 3 Bérlések listázása\n 4 Kilépés")
     Function = input()

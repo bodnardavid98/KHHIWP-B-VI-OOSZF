@@ -44,6 +44,19 @@ class Rental:
                     except:
                         print("Ilyen dátum nem létezik")
 
+    def addRent(self, carIndex, start, end, silent):
+        startResult = self.__dateRegex.match(start)
+        endResult = self.__dateRegex.match(end)
+        startyear, startmonth, startday = startResult.group(1), startResult.group(2), startResult.group(3)
+        endyear, endmonth, endday = endResult.group(1), endResult.group(2), endResult.group(3)
+        startDate = datetime.date(int(startyear), int(startmonth), int(startday))
+        endDate = datetime.date(int(endyear), int(endmonth), int(endday))
+        datedifference = endDate - startDate
+
+        self.__rents.append(Rent(self.__cars[carIndex], start, end, datedifference.days + 1))
+        if not silent:
+            print("Bérlés felvéve: %s" % str(self.__rents[-1]))
+
     def bookRent(self):
         for car in self.__cars:
             print(str(self.__cars.index(car)) + " " + str(car))
@@ -78,16 +91,7 @@ class Rental:
             else:
                 break
 
-        startResult = self.__dateRegex.match(start)
-        endResult = self.__dateRegex.match(end)
-        startyear, startmonth, startday = startResult.group(1), startResult.group(2), startResult.group(3)
-        endyear, endmonth, endday = endResult.group(1), endResult.group(2), endResult.group(3)
-        startDate = datetime.date(int(startyear), int(startmonth), int(startday))
-        endDate = datetime.date(int(endyear), int(endmonth), int(endday))
-        datedifference = endDate - startDate
-
-        self.__rents.append(Rent(self.__cars[car], start, end, datedifference.days + 1))
-        print("Bérlés felvéve: %s" % str(self.__rents[-1]))
+        self.addRent(car, start, end, False)
 
     def backRent(self):
         print(str(self) + "Válassz egy kölcsönzést a lemondásra")
